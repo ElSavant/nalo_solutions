@@ -1,5 +1,6 @@
 from rest_framework  import serializers
 from contacts.models import Contact
+from .validators import validate_file_extension
 
 class ContactSerialiser(serializers.ModelSerializer):
 
@@ -8,5 +9,5 @@ class ContactSerialiser(serializers.ModelSerializer):
         fields = ["firstname","lastname","phone","date_created"]
 
 class FileUploadSerializer(serializers.Serializer):
-    file = serializers.FileField()
+    file = serializers.FileField(validators=[validate_file_extension])
 

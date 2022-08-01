@@ -28,11 +28,13 @@ class UploadFileView(generics.CreateAPIView):
         reader = pd.read_csv(file)
         for _, row in reader.iterrows():
             new_contact = Contact(
-                       id = row['id'],
-                       staff_name= row["Staff Name"],
-                       position= row['Designated Position'],
-                       age= row["Age"],
-                       year_joined= row["Year Joined"]
+                       firstname = row["firstname"],
+                       lastname = row['lastname'],
+                       phone = row["phone"],
+                       company = row["company"],
+                       job_title = row["job_title"],
+                       birthday = row["birthday"],
+                       email = row["email"]
                        )
             new_contact.save()
         return Response({"status": "success"},

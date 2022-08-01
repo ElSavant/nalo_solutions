@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 class Contact(models.Model):
 
-    image = models.ImageField(upload_to='contacts/%Y')
+    image = models.ImageField(upload_to='contacts/%Y',blank=True,default="")
     firstname = models.CharField(max_length=100)
     lastname = models.CharField(max_length=100,blank=True,default="")
     phone = models.CharField(max_length=13,unique=True)
