@@ -11,7 +11,7 @@ class ContactList(generics.ListCreateAPIView):
 
     queryset = Contact.objects.all()
     serializer_class = ContactSerialiser
-    paginate_by = 20
+    
 
 class ContactDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Contact.objects.all()
@@ -26,14 +26,17 @@ class UploadFileView(generics.CreateAPIView):
         serializer.is_valid(raise_exception=True)
         file = serializer.validated_data['file']
         reader = pd.read_csv(file)
+        reader.fillna('',inplace=True)
         for _, row in reader.iterrows():
+            birthday = row["birthday"] if row["birthday"] != "" else "1900-01-01"
+            print(birthday)
             new_contact = Contact(
                        firstname = row["firstname"],
                        lastname = row['lastname'],
                        phone = row["phone"],
                        company = row["company"],
                        job_title = row["job_title"],
-                       #birthday = row["birthday"],
+                       birthday = row["birthday"] if row["birthday"] != "" else "1900-01-01",
                        email = row["email"]
                        )
             new_contact.save()
