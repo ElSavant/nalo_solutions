@@ -6,3 +6,7 @@ class ContactSerialiser(serializers.ModelSerializer):
     class Meta:
         model = Contact
         fields = ["firstname","lastname","phone","date_created"]
+
+class FileUploadSerializer(serializers.Serializer):
+    file = serializers.FileField()
+
