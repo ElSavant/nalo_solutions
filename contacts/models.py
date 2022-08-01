@@ -9,7 +9,7 @@ class Contact(models.Model):
     phone = models.CharField(max_length=13,unique=True)
     company = models.CharField(max_length=100, blank=True, default='')
     job_title = models.CharField(max_length=100, blank=True, default='')
-    birthday = models.DateField(blank=True, default="1900-10-10")
+    birthday = models.DateField(blank=True, default="1900-01-01")
     email = models.EmailField(blank=True,default="")
     date_created = models.DateTimeField(auto_now_add=True)
     

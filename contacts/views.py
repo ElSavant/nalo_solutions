@@ -33,7 +33,7 @@ class UploadFileView(generics.CreateAPIView):
                        phone = row["phone"],
                        company = row["company"],
                        job_title = row["job_title"],
-                       birthday = row["birthday"],
+                       #birthday = row["birthday"],
                        email = row["email"]
                        )
             new_contact.save()
