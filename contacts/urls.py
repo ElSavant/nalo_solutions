@@ -1,8 +1,9 @@
 
 from django.urls import path
-from contacts import views
+from .views import ContactList,ContactDetail,FileUploadView
 
 urlpatterns = [
-    path('contacts/', views.ContactList.as_view(),name = "list_contacts"),
-    path('contacts/<int:pk>/', views.ContactDetail.as_view()),
+    path('contacts/', ContactList.as_view(),name = "list_contacts"),
+    path('contacts/<int:pk>/', ContactDetail.as_view()),
+    path('contacts_upload', FileUploadView.as_view()),
 ]
