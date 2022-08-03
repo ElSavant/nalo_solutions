@@ -110,6 +110,7 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20
 }
 
+LOGIN_URL = '/api-auth/login'
 
 
 # Internationalization
