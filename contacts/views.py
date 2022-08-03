@@ -27,6 +27,7 @@ class UploadFileView(LoginRequiredMixin,generics.CreateAPIView):
         file = serializer.validated_data['file']
         reader = pd.read_csv(file)
         reader.fillna('',inplace=True)
+        ##Add code to check for right columns
         for _, row in reader.iterrows():
             new_contact = Contact(
                        firstname = row["firstname"],
@@ -40,6 +41,7 @@ class UploadFileView(LoginRequiredMixin,generics.CreateAPIView):
             try:
                 new_contact.save()
             except:
+                ##Add code to prompt user of contacts already in database
                 continue
         return Response({"status": "success"},
                         status.HTTP_201_CREATED)

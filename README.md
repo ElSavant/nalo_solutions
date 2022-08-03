@@ -3,7 +3,9 @@
 
 Needs local_settings.py file to be in the same folder as settings.py file
 
-run *docker-compose build* and *docker-compose up* with superuser privileges
+run *docker-compose build* and then *docker-compose up*
+
+run *docker-compose run web python manage.py createsuperuser* to create new superuser to allow login
 
 - Mock data(MOCK_DATA.csv) is in the data subfolder which has to be uploaded via this url
 	localhost:8000/api/contacts_upload/
